@@ -1,10 +1,30 @@
-@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+/* https://fontlibrary.org/en/font/hk-grotesk */
+@import url(https://fontlibrary.org/face/hk-grotesk);
 
 body {
-  font-family: 'Droid Serif';
-  background-color: rgb(64, 74, 83);
+  font-family: 'HKGroteskRegular';
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFCD33;
+}
+
+.logo {
+   position: absolute;
+   padding-right: 2em;
+   border-right: #FFCD33 20px solid;
+   height: 8em;
+   left: 8em;
+   top: 13em;
+}
+
+.logo img {
+  width: 8em;
+}
+
+.remark-slide-scaler {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 .output code {
@@ -33,7 +53,7 @@ body {
 }
 
 .remark-container {
-  background-color: rgb(64, 74, 83);
+  background-color: #FFCD33;
 }
 
 .float_left pre {
@@ -45,7 +65,8 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Yanone Kaffeesatz';
+  font-family: 'HKGroteskBold';
+  font-style: normal;
   font-weight: normal;
 }
 
@@ -178,15 +199,6 @@ ul {
 
 .onehundred img {
   width: 100%;
-}
-
-.small_graph img {
-  width: 40%;
-}
-
-.logo img {
-  width: 60%;
-  opacity: 0.3;
 }
 
 
