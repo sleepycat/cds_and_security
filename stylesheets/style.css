@@ -1,6 +1,23 @@
 /* https://fontlibrary.org/en/font/hk-grotesk */
 @import url(https://fontlibrary.org/face/hk-grotesk);
 
+.remark-slide {
+  border-bottom: #FFCD33 2.5em solid;
+}
+
+.big_code code {
+  font-size: 0.8em;
+}
+
+.remark-slide-number {
+    bottom: 8px;
+    opacity: .5;
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    right: 20px;
+}
+
 body {
   font-family: 'HKGroteskRegular';
   font-weight: normal;
@@ -12,13 +29,13 @@ body {
    position: absolute;
    padding-right: 2em;
    border-right: #FFCD33 20px solid;
-   height: 8em;
-   left: 8em;
+   height: 6em;
+   left: 10.65em;
    top: 13em;
 }
 
 .logo img {
-  width: 8em;
+  width: 6em;
 }
 
 .remark-slide-scaler {
@@ -32,7 +49,7 @@ body {
 }
 
 .javascript {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .small code {
