@@ -21,6 +21,21 @@ class: center, middle
 .seventy[![cio role](images/cds_launch.png)]
 
 ---
+
+class: center, middle
+## CDS partners to:
+
+* Deliver solutions: design, prototype, build 
+* Build Capacity: recruitment, learning
+* Provide advice: support CIOB and others
+
+## CDS doesn't:
+
+* operate services (not a business owner)
+* charge fees (not cost recovery)
+
+---
+
 class: center, middle
 
 .quote[The Government of Canada has an opportunity—and a responsibility—to deliver world-class services to Canadians. <strong>This will require disruption as we make the switch, both technically and culturally, to agile digital delivery models.</strong> To accelerate these efforts, I am excited to announce the launch of the Canadian Digital Service (CDS) to modernize the way the Government of Canada designs and delivers digital services. CDS will be a partner to departments in delivering measurably improved services. <strong>We are rethinking the service design and delivery process</strong> from the user’s perspective, and engaging users every step of the way. -- the Honourable Scott Brison]
@@ -39,6 +54,17 @@ class: center, middle
 * Devops
 * Continuous Delivery
 
+There is a common thread that runs through these...
+
+???
+What does rethinking the design and delivery process mean? All the buzzwords:
+
+* Agile/Iterative development
+* User/Human-centered Design
+* Devops
+* Continuous Delivery
+
+But there is a common thread that runs through them...
 ---
 
 class: center, middle
@@ -71,13 +97,22 @@ class: center, middle
 
 .quote[<strong>Lowering risk of change</strong> with tools and culture -- John Allspaw]
 
-.quote[DevOps culture blurs the line between the roles of developer and operations staff and may eventually eliminate the distinction. -- Martin Fowler]
+???
+Reducing risk by shortening feedback loops via automation and shared responsibility
+---
+class: center, middle
+
+## We want to build low risk systems
 
 ---
 
 class: center, middle
 
-## We want to build low risk systems
+## CDS has a mandate to experiment
+
+* We keep these experiments practical by building
+* We turn our experiments into advice or working systems
+* We share what we learn
 
 ---
 
@@ -213,126 +248,6 @@ class: center, middle
 * Everything is auditable
 * Entire system is now data to enable security automation
 * Automated security means more security
-
----
-
-class: center, middle
-
-## New ways to build
-
----
-class: center, middle
-
-.quote[<strong>Language-theoretic security (LangSec) is a design and programming philosophy that focuses on formally correct and verifiable input handling</strong> throughout all phases of the software development lifecycle. In doing so, <strong>it offers a practical method of assurance of software free from broad and currently dominant classes of bugs and vulnerabilities</strong> related to incorrect parsing and interpretation of messages between software components. -- Langsec.org]
-
----
-class: center, middle
-
-.quote[<strong>LangSec offers a unifying explanation for the existence of vulnerabilities and their continual perpetuation under current software design practices</strong> despite massive efforts at defining secure development practices. In short, the existence of exploitable bugs is a consequence of software designs that make verification and comprehensive testing infeasible and undecidable in the formal sense. -- Langsec.org]
-
----
-
-class: center, middle
-
-## New ways to build: GraphQL
-
-* Advertised as "a query language for APIs"
-* Actually a user defined context-free grammar + parser & execution engine
-
----
-
-class: center, middle, big_code
-
-```javascript
-describe('SQL injection', () => {
-  it('returns a SQL injected string', async () => {
-    let schema = new GraphQLSchema({
-      query: new GraphQLObjectType({
-        name: 'Query',
-        fields: () => ({
-          widgets: {
-            type: GraphQLString,
-            args: {
-              name: {
-                description: 'The name of the widget',
-                type: new GraphQLNonNull(GraphQLString)
-              }
-            },
-            resolve: (source, {name}) => `select * from widgets where name = '${name}';`
-          }
-        })
-      })
-    })
- 
-    let query = ` query widgetByName($name: String!) { widgets(name: $name) } `
-    let result = await graphql(schema, query, null, null, {name: "foo'; drop table widgets; --"})
-    expect(result.data.widgets).toEqual("select * from widgets where name = 'foo'; drop table widgets; --'")
-  })
-})
-```
-
----
-class: center, middle, big_code
-
-```javascript
-  let AlphabeticString = new GraphQLScalarType({
-    name: 'AlphabeticString',
-    description: 'represents a string with no special characters.',
-    serialize: String,
-    parseValue: (value) => {
-      if(value.match(/^([A-Za-z]|\s)+$/)) {
-        return value
-      }
-      return null
-    },
-    parseLiteral: (ast) => {
-      if(value.match(/^([A-Za-z]|\s)+$/)) {
-        return ast.value
-      }
-      return null
-    }
-  });
-```
----
-
-
-class: center, middle, big_code
-
-```javascript
-it('is fixed with custom types', async () => {
-  let schema = new GraphQLSchema({
-    query: new GraphQLObjectType({
-      name: 'Query',
-      fields: () => ({
-        widgets: {
-          type: GraphQLString,
-          args: {
-            name: {
-              description: 'The name of the widget',
-              type: new GraphQLNonNull(AlphabeticString)
-            }
-          },
-          resolve: (source, {name}) => {
-            return `select * from widgets where name = '${name}';`
-          }
-        }
-      })
-    })
-  })
-  let query = ` query widgetByName($name: AlphabeticString!) { widgets(name: $name) } `
-  let result = await graphql(schema, query, null, null, {name: "foo'; drop table widgets; --"})
-  expect(result.errors[0].message).toInclude("got invalid value")
-})
-```
----
-class: center, middle
-
-## New ways to build: GraphQL
-
-* GraphQL is a powerful new security boundary
-* Schema applies to every system behind it
-* Schema gives a single point to audit
-* Benefits for those who spend the time on tight type definitions
 
 ---
 
