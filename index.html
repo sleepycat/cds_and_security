@@ -22,7 +22,18 @@ class: center, middle
 
 ---
 
+
 class: center, middle
+
+.quote[The Government of Canada has an opportunity—and a responsibility—to deliver world-class services to Canadians. <strong>This will require disruption as we make the switch, both technically and culturally, to agile digital delivery models.</strong> <strong>To accelerate these efforts, I am excited to announce the launch of the Canadian Digital Service (CDS)</strong> to modernize the way the Government of Canada designs and delivers digital services. CDS will be a partner to departments in delivering measurably improved services. <strong>We are rethinking the service design and delivery process</strong> from the user’s perspective, and engaging users every step of the way. -- the Honourable Scott Brison]
+
+???
+At the ministerial level there is an appetite to explore process changes to increase the number of projects that are successfully delivered.
+---
+class: center, middle
+
+# "To accelerate these efforts..."
+
 ## CDS partners to:
 
 * Deliver solutions: design, prototype, build 
@@ -32,18 +43,8 @@ class: center, middle
 ## CDS doesn't:
 
 * operate services (not a business owner)
-* charge fees (not cost recovery)
 
 ---
-
-class: center, middle
-
-.quote[The Government of Canada has an opportunity—and a responsibility—to deliver world-class services to Canadians. <strong>This will require disruption as we make the switch, both technically and culturally, to agile digital delivery models.</strong> To accelerate these efforts, I am excited to announce the launch of the Canadian Digital Service (CDS) to modernize the way the Government of Canada designs and delivers digital services. CDS will be a partner to departments in delivering measurably improved services. <strong>We are rethinking the service design and delivery process</strong> from the user’s perspective, and engaging users every step of the way. -- the Honourable Scott Brison]
-
-???
-At the ministerial level there is an appetite to explore process changes to increase the number of projects that are successfully delivered.
----
-
 
 class: center, middle
 
@@ -100,9 +101,10 @@ class: center, middle
 ???
 Reducing risk by shortening feedback loops via automation and shared responsibility
 ---
+
 class: center, middle
 
-## We want to build low risk systems
+# We want to deliver low risk systems
 
 ---
 
@@ -118,9 +120,22 @@ class: center, middle
 
 class: center, middle
 
+## CDS has a mandate to experiment & so do you
+
+.quote[We want to incent people to try new things and to genuinely embrace risk, as part of the Government of Canada. -- The Honourable Scott Brison]
+
+---
+class: center, middle
+
 # CDS ❤  Security
 
 ### Different process, same goal: secure systems
+
+---
+
+class: center, middle
+
+# Experiments
 
 ---
 
@@ -145,7 +160,42 @@ class: center, middle
 ---
 class: center, middle
 
-### Infrastructure as Code: Terraform
+## When infrastructure is code
+
+* Visibility into every aspect of a system
+* Infrastructure changes can be tracked via version control
+* No gap between documentation & reality
+* Auditable on an ongoing basis
+* IaC + open code is the foundation of security automation
+* Automated security means more security & faster security
+* Security efforts directed to improving providers: everyone benefits
+
+---
+class: center, middle
+
+## Infrastructure as Code: Linuxkit
+
+---
+
+class: center, middle
+
+.ninety[![](images/play_with_moby.png)]
+
+---
+
+class: center, middle
+
+```sh
+export AWS_REGION=eu-west-1
+moby build -output raw examples/aws.yml
+linuxkit push aws -bucket bucketname aws.raw
+```
+
+---
+
+class: center, middle
+
+## Infrastructure as Code: Terraform
 
 ---
 class: middle
@@ -239,15 +289,9 @@ class: center, middle
 
 ---
 
-class: center, middle
+class: middle, center
 
-## When infrastructure is code
-
-* Entire environments are reproducible
-* No gap between what's documented & reality
-* Everything is auditable
-* Entire system is now data to enable security automation
-* Automated security means more security
+## New tools: new visibility
 
 ---
 
@@ -259,7 +303,7 @@ class: center, middle
 
 class: center, middle
 
-# Questions?
+### Questions?
 
 #### Mike Williamson
 * G: @sleepycat
